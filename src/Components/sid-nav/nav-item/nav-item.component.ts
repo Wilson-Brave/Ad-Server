@@ -2,6 +2,7 @@ import { NavService } from './../../../app/Services/nav.service';
 import { Component, Input, OnChanges } from '@angular/core';
 import { NavItem } from './nav-item';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-nav-item',
@@ -13,7 +14,7 @@ export class NavItemComponent implements OnChanges {
   @Input() item: NavItem | any;
   @Input() depth: any;
 
-  constructor(public navService: NavService, public router: Router) {
+  constructor(public auth: AuthService, public navService: NavService, public router: Router) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
@@ -27,7 +28,13 @@ export class NavItemComponent implements OnChanges {
   }
 
   onItemSelected(item: NavItem) {
+
+    // console.log(item);
+
     if (!item.children || !item.children.length) {
+      if(item.RouteCode === 69){
+        this.auth.logout();
+      }
       this.router.navigate([item.route]);
     }
 

@@ -2,65 +2,30 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'Publsher Zone',
   },
   {
-    displayName: 'Dashboard',
-    iconName: 'layout-dashboard',
-    route: '/dashboard',
+    displayName: 'Campaign',
+    iconName: 'bi bi-badge-ad-fill',
+    route: 'dashboard/campaigns',
   },
   {
-    navCap: 'Ui Components',
-  },
-  {
-    displayName: 'Badge',
-    iconName: 'rosette',
-    route: '/ui-components/badge',
-  },
-  {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Lists',
-    iconName: 'list',
-    route: '/ui-components/lists',
-  },
-  {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
-  },
-  {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    displayName: 'Charts',
+    iconName: 'bi bi-graph-up-arrow',
+    route: '/dashboard/charts',
   },
   {
     navCap: 'Auth',
   },
   {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
+    displayName: 'Profile',
+    iconName: 'bi bi-person-circle',
     route: '/authentication/register',
   },
   {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
-  {
-    displayName: 'Sample Page',
-    iconName: 'aperture',
-    route: '/extra/sample-page',
+    displayName: 'Log-Out',
+    iconName: 'bi bi-box-arrow-in-right',
+    route: '/authentication/register',
+    RouteCode: 69,
   },
 ];

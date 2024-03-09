@@ -8,11 +8,11 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss']
+  selector: 'app-home-dash',
+  templateUrl: './home-dash.component.html',
+  styleUrls: ['./home-dash.component.scss']
 })
-export class ProfilePageComponent implements OnInit {
+export class HomeDashComponent implements OnInit {
 
   @ViewChild('leftsidenav')
   public sidenav!: MatSidenav;
@@ -24,11 +24,11 @@ export class ProfilePageComponent implements OnInit {
   private isCollapsedWidthFixed = false;
   private htmlElement!: HTMLHtmlElement;
 
-
   get isOver(): boolean {
     return this.isMobileScreen;
   }
 
+  
   constructor(private breakpointObserver: BreakpointObserver) {
     this.htmlElement = document.querySelector('html')!;
     this.layoutChangesSubscription = this.breakpointObserver
@@ -60,4 +60,3 @@ export class ProfilePageComponent implements OnInit {
     this.isCollapsedWidthFixed = !this.isOver;
   }
 }
-
