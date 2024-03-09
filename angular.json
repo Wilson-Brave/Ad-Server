@@ -37,9 +37,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/style.scss"
+
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -104,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0d1f2173-2796-46be-93f1-fed079b1737f"
   }
 }

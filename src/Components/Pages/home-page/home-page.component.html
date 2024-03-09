@@ -1,0 +1,23 @@
+<div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+  <app-loading></app-loading>
+</div>
+
+<ng-template #loaded>
+
+  <div class="container" *ngIf="auth.user$| async as user; else notLoggedIn">
+
+    <app-home-dash></app-home-dash>
+    <h1>HI</h1>
+  </div>
+
+  <ng-template #notLoggedIn>
+    <h1>BYE</h1>
+
+    <!-- <div class="d-flex flex-column h-100">
+      <app-nav-bar></app-nav-bar>
+      <app-footer></app-footer>
+    </div> -->
+
+  </ng-template>
+
+</ng-template>

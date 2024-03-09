@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand text-success" href="#">
+      Ad Server - Beta
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse"></div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="About">
+            About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="justify-content-end collapse navbar-collapse">
+
+
+
+      <div *ngIf="auth.isLoading$ | async; else loaded">
+
+      </div>
+
+      <ng-template #loaded>
+
+        <span *ngIf="!(auth.user$ | async) as user">
+
+          <button class="navbar-btn btn btn-primary" (click)="login()">Log In</button>
+
+        </span>
+
+        <span class="dropdown mb-1" *ngIf="auth.user$ | async as user">
+          <img alt="Profile picture" class="nav-user-profile d-inline-block rounded-circle mr-3" style="width: 45px;"
+            [src]="user.picture" />
+          <div class="dropdown-content">
+            <a routerLink="Profile">Profile</a>
+            <a routerLink="Dashboard">Ad - Server</a>
+            <a (click)="logout()">Log Out</a>
+          </div>
+        </span>
+
+      </ng-template>
+
+    </div>
+  </div>
+</nav>
+
+
