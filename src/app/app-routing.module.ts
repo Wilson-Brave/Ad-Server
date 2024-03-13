@@ -19,11 +19,7 @@ const routes: Routes = [
         ),
     },
   ]
-
-
 },
-  {path:'Profile', component : ProfilePageComponent},
-  {path:'About', component : AboutPageComponent}
 ];
 
 

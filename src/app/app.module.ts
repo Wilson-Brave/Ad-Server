@@ -29,6 +29,7 @@ import { NavItemComponent } from '../Components/sid-nav/nav-item/nav-item.compon
 import { HeaderComponent } from '../Components/header/header.component';
 import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.component';
+import { ProfileComponent } from '../Components/profile/profile.component';
 // import { ProfileComponent } from '../Components/profile/profile.component';
 // import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 // import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
@@ -49,10 +50,10 @@ import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.compone
     HeaderComponent,
     HomeDashComponent,
     WelcomePageComponent,
- 
+    ProfileComponent
+
     // CampaignPageComponent,
     // AdChartsComponent,
-    // ProfileComponent,
   ],
 
   imports: [
