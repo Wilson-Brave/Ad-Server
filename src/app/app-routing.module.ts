@@ -4,10 +4,12 @@ import { AboutPageComponent } from '../Pages/about-page/about-page.component';
 import { HomePageComponent } from '../Pages/home-page/home-page.component';
 import { ProfilePageComponent } from '../Pages/profile-page/profile-page.component';
 import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
+import { PublisherPageComponent } from '../Pages/publisher-page/publisher-page.component';
 
 
 const routes: Routes = [
   {path:'', component : HomePageComponent},
+  {path:'Publisher', component : PublisherPageComponent},
   {
     path:'', component : HomeDashComponent,
     children: [

@@ -1,3 +1,17 @@
-<p>
-  publisher-page works!
-</p>
+<!-- app.component.html -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+      <ul>
+        <li> 
+          <div *ngFor="let publisher of publishers">
+            <p>{{ publisher.PublisherId }} - {{ publisher.PublisherName }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

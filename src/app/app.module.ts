@@ -30,6 +30,7 @@ import { HeaderComponent } from '../Components/header/header.component';
 import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { ProfileComponent } from '../Components/profile/profile.component';
 // import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 // import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
@@ -60,6 +61,7 @@ import { ProfileComponent } from '../Components/profile/profile.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-hjje0kyvnuofp674.us.auth0.com',
