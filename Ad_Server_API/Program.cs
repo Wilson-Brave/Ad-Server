@@ -10,11 +10,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 // Configure database connection
-builder.Services.AddDbContext<AdServerDbContext>(options =>
+try
+{
+    builder.Services.AddDbContext<AdServerDbContext>(options =>
     options.UseSqlServer(builder.Configuration
     .GetConnectionString("AdServerDb")));
 
+}
+catch (Exception e)
+{
+    Console.Write(e);
+}
+
 var modelBuilder = new ODataConventionModelBuilder();
+
+
 modelBuilder.EntitySet<Advertiser>("Advertiser");
 modelBuilder.EntitySet<Publisher>("Publisher");
 var edmModel = modelBuilder.GetEdmModel();

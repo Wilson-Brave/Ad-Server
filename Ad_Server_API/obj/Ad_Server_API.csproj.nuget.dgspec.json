@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\Ad_Server_API\\Ad_Server_API.csproj": {}
+    "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Ad_Server_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\Ad_Server_API\\Ad_Server_API.csproj": {
+    "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Ad_Server_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Ad_Server_API\\Ad_Server_API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Ad_Server_API.csproj",
         "projectName": "Ad_Server_API",
-        "projectPath": "C:\\Users\\User\\source\\repos\\Ad_Server_API\\Ad_Server_API.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Ad_Server_API.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\Ad_Server_API\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
