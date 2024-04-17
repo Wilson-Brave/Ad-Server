@@ -6,44 +6,47 @@ using Microsoft.OData.ModelBuilder;
 var builder = WebApplication.CreateBuilder(args);
 
 // Register IHttpContextAccessor
-//builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+});
 
 // Configure database connection
 builder.Services.AddDbContext<AdServerDbContext>(options =>
-    options.UseSqlServer(builder.Configuration
-    .GetConnectionString("AdServerDb")));
+    options.UseSqlServer("Server=localhost;Database=adServer;Trusted_Connection=True;TrustServerCertificate=True;"));
 
-var modelBuilder = new ODataConventionModelBuilder();
-modelBuilder.EntitySet<Advertiser>("Advertiser");
-modelBuilder.EntitySet<Publisher>("Publisher");
-var edmModel = modelBuilder.GetEdmModel();
-
-// Register OData service with support for batch requests.
-builder.Services.AddControllers().AddOData(
-    options => options.AddRouteComponents("odata", edmModel)
-    .EnableQueryFeatures().Filter().Expand().Select()
-    .OrderBy().SetMaxTop(null).Count());
+builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
-options.AddPolicy("AllowSpecificOrigin",
-builder =>
-{
-    builder.WithOrigins("http://localhost:4200")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
-}));
-
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    }));
 
 var app = builder.Build();
 
-// Enable OData batching middleware
-app.UseODataBatching();
-
 app.UseRouting();
-
 app.UseCors("AllowSpecificOrigin");
-
 app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AdServerDbContext>();
+    if (dbContext.Database.GetAppliedMigrations().Any())
+    {
+        // Tables exist, do nothing
+        Console.WriteLine("Tables already exist. No action needed.");
+    }
+    else
+    {
+        // Tables do not exist, create them
+        dbContext.Database.EnsureCreated();
+        Console.WriteLine("Tables created successfully.");
+    }
+}
 
 app.Run();
