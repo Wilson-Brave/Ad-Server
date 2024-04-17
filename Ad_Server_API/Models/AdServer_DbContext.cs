@@ -10,6 +10,7 @@ public class AdServerDbContext : DbContext
     }
 
     public DbSet<Advertiser> Advertiser  { get; set; }
+    public DbSet<Advert> Advert { get; set; }
     public DbSet<Publisher> Publisher { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,5 +25,9 @@ public class AdServerDbContext : DbContext
 
         modelBuilder.Entity<Publisher>()
             .HasKey(s => s.PublisherId);
+
+        modelBuilder.Entity<Publisher>()
+            .HasKey(s => s.PublisherId);
+
     }
 }

@@ -1,0 +1,20 @@
+.b-nav {
+  height: auto;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 69;
+}
+
+.container-fluid {
+  color: white;
+}
+
+.content-container {
+  // padding-top: 10vh; /* Adjust according to the height of your navbar */
+  overflow-y: auto;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  //calc(100vh - 10vh); /* Subtract navbar height from viewport height */
+}

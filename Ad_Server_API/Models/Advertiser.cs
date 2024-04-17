@@ -3,7 +3,8 @@
 public class Advertiser
 {
     public int AdvertiserId { get; set; }
-    public int AdvertiserName { get; set; }
+    public string AdvertiserBusinessName { get; set; }
+    public string AdvertiserWebsite { get; set; }
 
 
 }

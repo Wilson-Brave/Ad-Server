@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|c:\\users\\user\\documents\\dev_ops\\code\\angular\\asd_demo\\ad-server\\ad_server_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|c:\\users\\user\\documents\\dev_ops\\code\\angular\\asd_demo\\ad-server\\ad_server_api\\models\\adserver_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|solutionrelative:models\\adserver_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|c:\\users\\user\\documents\\dev_ops\\code\\angular\\asd_demo\\ad-server\\ad_server_api\\controllers\\advertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|solutionrelative:controllers\\advertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|c:\\users\\user\\documents\\dev_ops\\code\\angular\\asd_demo\\ad-server\\ad_server_api\\models\\advert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66C08E1-0B2C-4D0B-A33A-08B71725591F}|Ad_Server_API.csproj|solutionrelative:models\\advert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +36,48 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAApAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAACQAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T12:08:15.372Z",
+              "WhenOpened": "2024-04-17T11:11:53.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdServer_DbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Models\\AdServer_DbContext.cs",
+              "RelativeDocumentMoniker": "Models\\AdServer_DbContext.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Models\\AdServer_DbContext.cs",
+              "RelativeToolTip": "Models\\AdServer_DbContext.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAYwBgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T11:10:26.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdvertController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Controllers\\AdvertController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdvertController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Controllers\\AdvertController.cs",
+              "RelativeToolTip": "Controllers\\AdvertController.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAQwDAAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T11:09:34.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Advert.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Models\\Advert.cs",
+              "RelativeDocumentMoniker": "Models\\Advert.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Dev_Ops\\Code\\Angular\\ASD_Demo\\Ad-Server\\Ad_Server_API\\Models\\Advert.cs",
+              "RelativeToolTip": "Models\\Advert.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T11:08:00.573Z",
               "EditorCaption": ""
             }
           ]

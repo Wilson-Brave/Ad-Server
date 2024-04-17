@@ -64,8 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: 'dev-hjje0kyvnuofp674.us.auth0.com',
-      clientId: 'be8D0jDMjWfaGJz3fGnunKe9YYIUMEfK',
+      domain: 'dev-nk3wthik.us.auth0.com',
+      clientId: 'qVHWQZ4Uyg4Z3xqKEtP1gFtE32ZfZ4L1',
       authorizationParams: {
         redirect_uri: window.location.origin,
       },

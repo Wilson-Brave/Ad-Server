@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GlobalVariables } from './../../global'; 
+import { GlobalVariables } from './../../global';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AdvertiserService { 
+export class AdvertiserService {
 
   constructor(private http: HttpClient) { }
 
@@ -19,9 +19,23 @@ export class AdvertiserService {
       map(response => response.value)
     );
   }
+
+  getAdverts(advertiserId:number): Observable<Advertiser[]> {
+    return this.http.get<any>(`${GlobalVariables.BASE_API_URL}/Advert`).pipe(
+      map(response => response.value)
+    );
+  }
+
 }
 
 export interface Advertiser {
   AdvertiserId: number;
-  AdvertiserName: string; 
+  AdvertiserName: string;
+}
+
+export interface Advert {
+  AdvertId: number;
+  AdvertiserId: number;
+  AdvertName: string;
+  AdvertDescription: string;
 }
