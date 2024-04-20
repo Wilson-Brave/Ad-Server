@@ -1,3 +1,4 @@
+using Ad_Server_API.Controllers;
 using Ad_Server_API.Models;
 using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
@@ -10,13 +11,33 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 // Configure database connection
-builder.Services.AddDbContext<AdServerDbContext>(options =>
+try
+{
+    builder.Services.AddDbContext<AdServerDbContext>(options =>
     options.UseSqlServer(builder.Configuration
     .GetConnectionString("AdServerDb")));
 
+}
+catch (Exception e)
+{
+    Console.Write(e);
+}
+
 var modelBuilder = new ODataConventionModelBuilder();
+
+
 modelBuilder.EntitySet<Advertiser>("Advertiser");
+
+
+modelBuilder.EntitySet<Advert>("Advert");
+modelBuilder.EntityType<Advert>()
+    .Collection
+    .Function("GetAdvertByAdvertiser")
+    .ReturnsCollectionFromEntitySet<Advert>("Advert")
+    .Parameter<int>("id");
+
 modelBuilder.EntitySet<Publisher>("Publisher");
+
 var edmModel = modelBuilder.GetEdmModel();
 
 // Register OData service with support for batch requests.

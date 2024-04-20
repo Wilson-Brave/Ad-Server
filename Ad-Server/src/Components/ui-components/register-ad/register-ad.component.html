@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="adTitle" class="form-label">Advertisement Title</label>
+          <input type="text" class="form-control" id="adTitle" placeholder="Enter advertisement title" required>
+        </div>
+        <div class="mb-3">
+          <label for="adDescription" class="form-label">Advertisement Description</label>
+          <textarea class="form-control" id="adDescription" rows="3" placeholder="Enter advertisement description" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="adMedia" class="form-label">Upload Media</label>
+          <input type="file" class="form-control" id="adMedia" accept="image/*, video/*" required>
+          <small class="form-text text-muted">Accepted formats: image and video files</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

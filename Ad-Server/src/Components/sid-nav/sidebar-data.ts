@@ -2,17 +2,27 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Publsher Zone',
+    navCap: 'Advertiser',
   },
   {
-    displayName: 'Campaign',
+    displayName: 'Home',
+    iconName: 'bi bi-badge-house-door',
+    route: 'dashboard/advertiser-home',
+  },
+  {
+    displayName: 'Reister Ads',
     iconName: 'bi bi-badge-ad-fill',
-    route: 'dashboard/campaigns',
+    route: 'dashboard/register-advert',
   },
   {
-    displayName: 'Charts',
-    iconName: 'bi bi-graph-up-arrow',
-    route: '/dashboard/charts',
+    displayName: 'Ad-Campaigns',
+    iconName: 'bi bi-megaphone',
+    route: '/dashboard/ad-campaign',
+  },
+  {
+    displayName: 'Funding',
+    iconName: 'bi bi-coin',
+    route: '/dashboard/ad-funds',
   },
   {
     navCap: 'Auth',
