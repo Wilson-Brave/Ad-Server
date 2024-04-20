@@ -1,0 +1,25 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div>
+       <label for="name">Name:</label>
+       <input type="text" id="name" formControlName="name" required>
+    </div>
+    <div>
+       <label for="address">User Address:</label>
+       <input type="text" id="address" formControlName="address" required>
+    </div>
+    <div>
+       <label for="contact">Contact Number:</label>
+       <input type="text" id="contact" formControlName="contact" required pattern="\+?\d{1,7}">
+    </div>
+    <div>
+       <label for="email">Email:</label>
+       <input type="email" id="email" formControlName="email" required>
+    </div>
+    <p>What will you be?</p>
+    <div>
+       <button type="button" (click)="selectRole('publisher')">Publisher</button>
+       <button type="button" (click)="selectRole('advertiser')">Advertiser</button>
+    </div>
+    <button type="submit" [disabled]="!signUpForm.valid || !selectedRole">Create Account</button>
+   </form>
+   
