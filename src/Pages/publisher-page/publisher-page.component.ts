@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publisher-page.component.scss']
 })
 export class PublisherPageComponent implements OnInit {
+currentEarnings: any;
+projectedEarnings: any;
+earningsTrendData: any;
+earningsTrendOptions: any;
+topAdUnitsData: any;
+topAdUnitsOptions: any;
+underperformingAlerts: any;
 
   constructor() { }
 

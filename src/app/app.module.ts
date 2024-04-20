@@ -30,6 +30,7 @@ import { HeaderComponent } from '../Components/header/header.component';
 import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 // import { ProfileComponent } from '../Components/profile/profile.component';
 // import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 // import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
@@ -75,7 +76,9 @@ import { ProfileComponent } from '../Components/profile/profile.component';
     TablerIconsModule.pick(TablerIcons),
   ],
   exports: [TablerIconsModule],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
