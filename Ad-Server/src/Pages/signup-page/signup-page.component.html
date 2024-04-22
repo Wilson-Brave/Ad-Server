@@ -1,25 +1,110 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <div>
-       <label for="name">Name:</label>
-       <input type="text" id="name" formControlName="name" required>
-    </div>
-    <div>
-       <label for="address">User Address:</label>
-       <input type="text" id="address" formControlName="address" required>
-    </div>
-    <div>
-       <label for="contact">Contact Number:</label>
-       <input type="text" id="contact" formControlName="contact" required pattern="\+?\d{1,7}">
-    </div>
-    <div>
-       <label for="email">Email:</label>
-       <input type="email" id="email" formControlName="email" required>
-    </div>
-    <p>What will you be?</p>
-    <div>
-       <button type="button" (click)="selectRole('publisher')">Publisher</button>
-       <button type="button" (click)="selectRole('advertiser')">Advertiser</button>
-    </div>
-    <button type="submit" [disabled]="!signUpForm.valid || !selectedRole">Create Account</button>
-   </form>
-   
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+   <body>
+
+      <!-- Body of Form starts -->
+      <div class="container">
+            <h1> Sign Up </h1>
+      <!--<form method="post" autocomplete="on">-->
+      <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+         <!--First name-->
+            <div class="box">
+            <label for="firstName" class="fl fontLabel"> First Name: </label>
+               <div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+               <div class="fr">
+                     <input type="text" name="firstName" [(ngModel)]="user.firstName" placeholder="First Name"
+               class="textBox" autofocus="on" required>
+               </div>
+               <div class="clr"></div>
+            </div>
+            <!--First name-->
+
+
+         <!--last name-->
+            <div class="box">
+            <label for="lastName" class="fl fontLabel"> Seconed Name: </label>
+               <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+               <div class="fr">
+                     <input type="text" required name="lastName" [(ngModel)]="user.lastName"
+               placeholder="Last Name" class="textBox">
+               </div>
+               <div class="clr"></div>
+            </div>
+            <!--last name-->
+
+            <!--Address name-->
+            <div class="box">
+               <label for="addressName" class="fl fontLabel"> Address: </label>
+                  <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+                  <div class="fr">
+                        <input type="text" required name="addressName" [(ngModel)]="user.address"
+                  placeholder="Namibia, Windhoek" class="textBox">
+                  </div>
+                  <div class="clr"></div>
+               </div>
+            <!--Address name-->
+
+
+            <!---Phone No.------>
+            <div class="box">
+            <label for="phone" class="fl fontLabel"> Phone No.: </label>
+               <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+               <div class="fr">
+                     <input type="text" required name="phoneNo" [(ngModel)]="user.phoneNo" maxlength="10" placeholder="Phone No." class="textBox">
+               </div>
+               <div class="clr"></div>
+            </div>
+            <!---Phone No.---->
+
+
+            <!---Email ID---->
+            <div class="box">
+            <label for="email" class="fl fontLabel"> Email ID: </label>
+               <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+               <div class="fr">
+                     <input type="email" required name="email" [(ngModel)]="user.email" placeholder="Email Id" class="textBox">
+               </div>
+               <div class="clr"></div>
+            </div>
+            <!--Email ID----->
+
+
+            <!---Password------>
+            <div class="box">
+            <label for="password" class="fl fontLabel"> Password </label>
+               <div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+               <div class="fr">
+                     <input type="Password" required name="password" [(ngModel)]="user.password" placeholder="Password" class="textBox">
+               </div>
+               <div class="clr"></div>
+            </div>
+            <!---Password---->
+
+            <!---Role----->
+            <div class="box radio">
+            <label for="role" class="fl fontLabel"> Role: </label>
+                  <input type="radio" [(ngModel)]="user.role" name="Role" value="Advertiser" required> Advertiser &nbsp; &nbsp; &nbsp; &nbsp;
+                  <input type="radio" [(ngModel)]="user.role" name="Role" value="Publisher" required> Publisher
+            </div>
+            <!---Role--->
+
+
+
+
+            <!---Submit Button------>
+            <div class="box">
+                 <!-- <input type="Submit" name="Submit" class="submit" value="SUBMIT">-->
+                 <button type="submit" name="Submit" class="submit">Submit</button>
+            </div>
+            <!---Submit Button----->
+      </form>
+   </div>
+   <!--Body of Form ends--->
+   </body>
+ </html>
