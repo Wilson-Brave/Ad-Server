@@ -33,6 +33,7 @@ import { ProfileComponent } from '../Components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupPageComponent } from '../Pages/signup-page/signup-page.component';
 import { LoginPageComponent } from '../Pages/login-page/login-page.component';
+import { RouterModule } from '@angular/router';
 // import { ProfileComponent } from '../Components/profile/profile.component';
 // import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 // import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
@@ -78,6 +79,7 @@ import { LoginPageComponent } from '../Pages/login-page/login-page.component';
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
+    RouterModule,
   ],
   exports: [TablerIconsModule],
   providers: [],

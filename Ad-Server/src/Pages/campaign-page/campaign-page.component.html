@@ -1,3 +1,110 @@
-<p>
-  campaign-page works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">
+                ASD
+            </div>
+            <ul class="menu">
+                <li><a routerLink="/advertiser" class="btn"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a routerLink="/campaign" class="btn"><i class="fas fa-bullhorn"></i> Campaign</a></li>
+                <li><a routerLink="/analytics" class="btn"><i class="fas fa-chart-line"></i>Analytics</a> </li>
+                
+            </ul>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i> Log out
+            </div>
+        </div>
+        <div class="main-content">
+          <div class="row" style="width: 100%;">
+            <h1>Campaigns</h1>
+            </div>
+            <div class="container">
+              <form [formGroup]="campaignForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <h4>Create Campaign</h4>
+                  <div class="col-half">
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="Business Name"/>
+                      <div class="input-icon"><i class="fa fa-briefcase"></i></div>
+                    </div>
+                  </div>
+                  <div class="col-half">
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="Campaign Theme (Pets, Toys, Fashion, Drinks)"/>
+                      <div class="input-icon"><i class="fa fa-bullhorn"></i></div>
+                    </div>
+                 </div>
+                  <div class="input-group input-group-icon">
+                    <input type="url" placeholder="Website URL"/>
+                    <div class="input-icon"><i class="fas fa-laptop"></i></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-half">
+                    <h4>Category</h4>
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="e.g Animals"/>
+                      <div class="input-icon"><i class="fas fa-paw"></i></div>
+                    </div>
+                  </div>
+                  <div class="col-half">
+                    <h4>Budget</h4>
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="100"/>
+                      <div class="input-icon"><i class="fas fa-money-check-alt"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-half">
+                    <h4>Location</h4>
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="Namibia"/>
+                      <div class="input-icon"><i class="fa fa-location-arrow"></i></div>
+                    </div>
+                  </div>
+                  <div class="col-half">
+                    <h4>Language</h4>
+                    <div class="input-group input-group-icon">
+                      <input type="text" placeholder="English"/>
+                      <div class="input-icon"><i class="	fa fa-language"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-half">
+                  <h4>Ad Type</h4>
+                  <div class="input-group">
+                    <input id="image" type="radio" name="mediaType" value="image"/>
+                    <label for="image">Image</label>
+                    <input id="video" type="radio" name="mediaType" value="video"/>
+                    <label for="video">Video</label>
+                  </div>
+                </div>
+                
+                <h4>Ad Space Type</h4>
+                <select formControlName="adSpaceType">
+                  <option value="banner">Banner</option>
+                  <option value="sidebar">Sidebar</option>
+                  <option value="fullscreen">Fullscreen</option>
+                  <option value="rectangle">Rectangle</option>
+                  <option value="square">Square</option>
+                  <option value="popup">Pop-up</option>
+                </select>
+                <input type="file" formControlName="file">
+                <button type="submit">Submit Campaign</button>
+              </form>
+            </div>
+            <!-- Form for campaign ENDS-->
+        </div>
+    </div>
+</body>
+</html>
+
