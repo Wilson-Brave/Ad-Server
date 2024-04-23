@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+    <app-loading></app-loading>
+  </div>
+
+  <ng-template #loaded>
+    <div *ngIf="auth.isAuthenticated$ | async; else isNotAuthenticated">
+
+      <app-home-dash></app-home-dash>
+
+    </div>
+    <ng-template #isNotAuthenticated>
+      <div class="b-nav">
+        <app-nav-bar></app-nav-bar>
+      </div>
+
+      <div class="container-fluid content-container">
+        <app-welcome-page></app-welcome-page>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

@@ -1,0 +1,13 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: black; }
+
+.mouseover:hover{
+cursor: pointer;
+}
+
+.b-text-white{
+color: white !important;
+}
+

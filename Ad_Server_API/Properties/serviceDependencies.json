@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:IKClusterMediaStorageDb_App",
+      "dynamicId": null
+    }
+  }
+}
