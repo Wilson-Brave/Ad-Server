@@ -1,3 +1,109 @@
-<p>
-  advertiser-home works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1>Advertisements</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- Spacer -->
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-outline-primary btn-lg" (click)="newAdvertPopUp()">
+        <i class="bi bi-plus-circle"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th>Advert Name</th>
+            <th>Advert Description</th>
+            <th class="text-center"></th>
+            <th class="text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let advert of ads; let i=index">
+            <td>{{ i }}</td>
+            <td>{{ advert.AdvertName }}</td>
+            <td>{{ advert.AdvertDescription }}</td>
+            <td class="text-center">
+              <div class="row justify-content-center">
+                <div class="col">
+                  <button type="button" class="btn btn-outline-success"
+                    (click)="openAdvertModal(advert.AdvertId)">Edit</button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-outline-danger"
+                    (click)="deleteAdvert(advert.AdvertId)">Delete</button>
+                </div>
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="advertModal" class="card mx-auto" style="width: 80%">
+
+  <div class="card-body">
+
+    <h5 class="card-title text-center">Create New Advert</h5>
+
+    <form class="g-3 needs-validation" [formGroup]="newAdvertFormGroup" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+
+        <div class="col">
+          <label for="AdvertName" class="form-label">Advert Name</label>
+          <input type="text" class="form-control" id="AdvertName" [(ngModel)]="newAdvert.AdvertName"
+            formControlName="advertName">
+        </div>
+
+        <div class="col">
+          <label for="AdvertTypeId" class="form-label">Select Ad Type</label>
+          <select class="form-select" id="AdvertTypeId" [(ngModel)]="newAdvert.AdvertTypeId"
+            formControlName="AdvertTypeId">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+
+        <div class="col">
+            <label for="mediaFile" class="form-label">Media File</label>
+            <input type="file" class="form-control" id="mediaFile" [ngModel]="newAdvert.MediaFile" (change)="onFileSelected($event)" accept="image/*"
+              formControlName="mediaFile">
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="AdvertDescription" class="form-label">Advert Description</label>
+          <textarea class="form-control" id="AdvertDescription" [(ngModel)]="newAdvert.AdvertDescription" rows="3"
+            required formControlName="AdvertDescription"></textarea>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" [disabled]="!newAdvertFormGroup.valid">Submit form</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

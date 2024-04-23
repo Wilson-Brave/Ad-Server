@@ -7,4 +7,5 @@ public class Advert
     public int AdvertiserId { get; set; }
     public string AdvertName { get; set; }
     public string AdvertDescription { get; set; }
+    public byte[] MediaFile { get; set; }
 }

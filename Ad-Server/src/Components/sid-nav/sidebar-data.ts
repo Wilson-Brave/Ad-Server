@@ -30,7 +30,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Profile',
     iconName: 'bi bi-person-circle',
-    route: '/authentication/register',
+    route: '/dashboard/profile',
   },
   {
     displayName: 'Log-Out',

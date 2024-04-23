@@ -26,8 +26,8 @@ public class AdServerDbContext : DbContext
         modelBuilder.Entity<Publisher>()
             .HasKey(s => s.PublisherId);
 
-        modelBuilder.Entity<Publisher>()
-            .HasKey(s => s.PublisherId);
+        modelBuilder.Entity<Advert>()
+            .HasKey(s => s.AdvertId);
 
     }
 }

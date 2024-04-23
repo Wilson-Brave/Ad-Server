@@ -30,11 +30,12 @@ modelBuilder.EntitySet<Advertiser>("Advertiser");
 
 
 modelBuilder.EntitySet<Advert>("Advert");
+
 modelBuilder.EntityType<Advert>()
     .Collection
-    .Function("GetAdvertByAdvertiser")
+    .Function(nameof(AdvertController.AdvertByAdvertiser))
     .ReturnsCollectionFromEntitySet<Advert>("Advert")
-    .Parameter<int>("id");
+    .Parameter<int>("AdvertiserId");
 
 modelBuilder.EntitySet<Publisher>("Publisher");
 

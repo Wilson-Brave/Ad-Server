@@ -46,13 +46,14 @@ public class AdvertController : ODataController
         return SingleResult.Create(result);
     }
 
-    public IQueryable<Advert> GetAdvertByAdvertiser([FromODataUri] int id)
+    [HttpGet]
+    [EnableQuery]
+    public IQueryable<Advert> AdvertByAdvertiser([FromODataUri] int AdvertiserId)
     {
         try
         {
-            IQueryable<Advert> result = _db.Advert.Where(s => s.AdvertiserId == id);
+            IQueryable<Advert> result = _db.Advert.Where(s => s.AdvertiserId == AdvertiserId);
             return result;
-
         }
         catch (Exception e)
         {

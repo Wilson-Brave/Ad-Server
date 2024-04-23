@@ -31,9 +31,11 @@ import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
-// import { ProfileComponent } from '../Components/profile/profile.component';
-// import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
-// import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
+import { CommonModule } from '@angular/common';
+import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
+import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
+import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
+import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-home/advertiser-home.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminPageComponent,
     PublisherPageComponent,
     AdvertiserPageComponent,
+    AdvertiserHomeComponent,
     LoadingComponent,
     ProfilePageComponent,
     SidNavComponent,
@@ -51,33 +54,37 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     HomeDashComponent,
     WelcomePageComponent,
-    ProfileComponent
-
-    // CampaignPageComponent,
-    // AdChartsComponent,
-  ],
+    ProfileComponent,
+    CampaignPageComponent,
+    AdChartsComponent
+    ],
 
   imports: [
+    FormsModule,
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    // Import the module into the application, with configuration
+    BrowserAnimationsModule,
+    MatCommonModule,
     AuthModule.forRoot({
-      domain: 'dev-nk3wthik.us.auth0.com',
-      clientId: 'qVHWQZ4Uyg4Z3xqKEtP1gFtE32ZfZ4L1',
+      domain: "dev-wd28w6mdxk7yi6l1.us.auth0.com",
+      clientId:"XU8WZVSb7lqHroVerjyWHTjL0kMJX0jP",
       authorizationParams: {
         redirect_uri: window.location.origin,
       },
     }),
 
     FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
+    ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
+    MatNativeDateModule,
   ],
+
   exports: [TablerIconsModule],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

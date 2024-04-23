@@ -20,6 +20,8 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
+.Ad_Server_API/vs
+
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
@@ -44,3 +46,4 @@ Thumbs.db
 
 # API
 /Ad_Server_API/bin
+Ad_Server_API/Models
