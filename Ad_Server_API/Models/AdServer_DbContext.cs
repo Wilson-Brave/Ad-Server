@@ -12,6 +12,7 @@ public class AdServerDbContext : DbContext
     public DbSet<Advertiser> Advertiser  { get; set; }
     public DbSet<Advert> Advert { get; set; }
     public DbSet<Publisher> Publisher { get; set; }
+    public DbSet<GoogleUserInfo> GoogleUserInfo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -28,6 +29,9 @@ public class AdServerDbContext : DbContext
 
         modelBuilder.Entity<Advert>()
             .HasKey(s => s.AdvertId);
+
+        modelBuilder.Entity<GoogleUserInfo>()
+            .HasKey(s => s.GoogleUserInfoId);
 
     }
 }

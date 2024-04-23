@@ -41,6 +41,7 @@ import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
 import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
 import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-home/advertiser-home.component';
+import { RegisterAdComponent } from '../Components/ui-components/register-ad/register-ad.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-
     AdminPageComponent,
     PublisherPageComponent,
     AdvertiserPageComponent,
+    RegisterAdComponent,
     AdvertiserHomeComponent,
     LoadingComponent,
     ProfilePageComponent,
@@ -64,7 +66,6 @@ import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-
     LoginPageComponent,
     // CampaignPageComponent,
     // AdChartsComponent,
-  ],
     ProfileComponent,
     CampaignPageComponent,
     AdChartsComponent

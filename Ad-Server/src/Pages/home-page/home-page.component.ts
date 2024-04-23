@@ -12,9 +12,12 @@ export class HomePageComponent implements OnInit {
 
   constructor(public auth: AuthService, public homeService: HomeService) {}
   ngOnInit() {
-    // if (this.auth.isAuthenticated$) {
-    //   console.log("True");
-    //   this.loggedInUser = this.homeService.loggedInUser;
-    // }
+    if (this.auth.isAuthenticated$) {
+      this.auth.user$.subscribe( u =>
+        console.log(u?.given_name)
+      )
+
+      this.loggedInUser = this.homeService.loggedInUser;
+    }
   }
 }

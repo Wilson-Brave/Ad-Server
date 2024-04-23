@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
+import { GlobalVariables } from './../../global';
+import { Observable, map, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,26 +10,42 @@ import { AuthService } from '@auth0/auth0-angular';
 export class HomeService {
   public profileJson!: string;
   public loggedInUser!: AppUser;
+  public appUser!: GoogleUserInfo;
+  public subAsString!:string;
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, public http: HttpClient) {
+    this.auth.user$.subscribe(u => {
+        if (this.isUserLoggedIn(`${u?.sub}`)) {
+            // User is logged in
+            console.log(`Hi ${this.appUser.Given_name}`)
+          } else {
+            // User is not logged in
+            postAdvert(advert: Advert): Observable<any> {
 
-    try{
+              const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+              return this.http.post<any>(
+                `${GlobalVariables.BASE_API_URL}/Advert`,
+                advert,
+                { headers }
 
-    this.auth.user$.subscribe(
-      (profile) => {
-        this.profileJson = JSON.stringify(profile, null, 2);
+              );
 
-        console.log(this.profileJson);
+            }
+          }
+    });
+}
 
-        this.loggedInUser = this.mapToAppUser(profile);
-      }
-    );
-
-  }catch(e){
-    console.log(e);
-  }
-
-  }
+isUserLoggedIn(sub: string): Observable<GoogleUserInfo | boolean> {
+  return this.http
+      .get<any>(`${GlobalVariables.BASE_API_URL}/googleUserInfo/CheckIfUserExists(Sub='${sub}')`)
+      .pipe(
+          map((response) => {
+              const exists = response.value.length > 0;
+              this.appUser = response.value.length > 0 ? response.value[0] : null;
+              return exists ? response.value[0] : false;
+          })
+      );
+}
 
   mapToAppUser(profile: any): AppUser {
     return {
@@ -48,6 +66,20 @@ export interface AppUser {
   nickname: string;
   phone_number: string;
   app_metadata: string;
+}
+
+export interface GoogleUserInfo {
+  GoogleUserInfoId: number;
+  Given_name: string;
+  Family_name: string;
+  Nickname: string;
+  Name: string;
+  Picture: string;
+  Locale: string;
+  Updated_at: Date;
+  Email: string;
+  Email_verified: boolean;
+  Sub: string;
 }
 
 

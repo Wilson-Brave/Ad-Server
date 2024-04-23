@@ -28,14 +28,25 @@ var modelBuilder = new ODataConventionModelBuilder();
 
 modelBuilder.EntitySet<Advertiser>("Advertiser");
 
+modelBuilder.EntitySet<GoogleUserInfo>("GoogleUserInfo");
+modelBuilder.EntityType<GoogleUserInfo>()
+    .Collection
+    .Function(nameof(GoogleUserInfoController.CheckIfUserExists))
+    .Returns<GoogleUserInfo>()
+    .Parameter<string>("Sub");
+
 
 modelBuilder.EntitySet<Advert>("Advert");
-
 modelBuilder.EntityType<Advert>()
     .Collection
     .Function(nameof(AdvertController.AdvertByAdvertiser))
     .ReturnsCollectionFromEntitySet<Advert>("Advert")
     .Parameter<int>("AdvertiserId");
+
+modelBuilder.EntityType<Advert>()
+    .Function(nameof(AdvertController.UploadFile))
+    .Returns<bool>()
+    .Parameter<IFormFile>("File");
 
 modelBuilder.EntitySet<Publisher>("Publisher");
 

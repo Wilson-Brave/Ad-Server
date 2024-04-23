@@ -5,7 +5,9 @@
 
   <ng-template #loaded>
     <div *ngIf="auth.isAuthenticated$ | async; else isNotAuthenticated">
+
       <app-home-dash></app-home-dash>
+
     </div>
     <ng-template #isNotAuthenticated>
       <div class="b-nav">

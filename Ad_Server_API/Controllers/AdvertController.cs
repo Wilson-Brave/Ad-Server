@@ -14,6 +14,7 @@ public class AdvertController : ODataController
 {
     private AdServerDbContext _db;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly string _uploadFolderPath = "wwwroot/uploads";
 
     public AdvertController(AdServerDbContext context, IHttpContextAccessor httpContextAccessor)
     {
@@ -112,6 +113,40 @@ public class AdvertController : ODataController
         return Updated(update);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> UploadFile([FromBody] IFormFile File)
+    {
+        if (File == null || File.Length == 0)
+        {
+            return BadRequest("No File uploaded");
+        }
+
+        try
+        {
+            // Ensure the upload directory exists
+            if (!Directory.Exists(_uploadFolderPath))
+            {
+                Directory.CreateDirectory(_uploadFolderPath);
+            }
+
+            // Generate a unique File name
+            var FileName = Guid.NewGuid().ToString() + Path.GetExtension(File.FileName);
+            var FilePath = Path.Combine(_uploadFolderPath, FileName);
+
+            // Save the File to the server
+            using (var stream = new FileStream(FilePath, FileMode.Create))
+            {
+                await File.CopyToAsync(stream);
+            }
+
+            // Return the File path or other information
+            return Ok(new { FilePath = FilePath });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
 
     public async Task<IActionResult> Post([FromBody] Advert insert)
     {

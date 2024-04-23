@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ad_Server_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f361ea84f99f9f0d486f903e8ebc09443003bfe0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5602eef3357498250bcd8ec75c8c3bfc8523af00")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ad_Server_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ad_Server_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
