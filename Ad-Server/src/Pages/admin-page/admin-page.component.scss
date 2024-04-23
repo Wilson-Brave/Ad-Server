@@ -1,0 +1,75 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 16.666%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.menu li i {
+    margin-right: 10px;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    width: calc(16.666% - 40px);
+    font-size: 18px;
+}
+
+.logout i {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: white;
+    padding: 20px;
+}
+
+.main-content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.graphs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.graph {
+    width: 30%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.graph h2 {
+    font-size: 24px;
+    color: #333;
+}

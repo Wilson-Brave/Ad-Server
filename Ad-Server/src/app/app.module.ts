@@ -31,6 +31,11 @@ import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { WelcomePageComponent } from '../Pages/welcome-page/welcome-page.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupPageComponent } from '../Pages/signup-page/signup-page.component';
+import { LoginPageComponent } from '../Pages/login-page/login-page.component';
+// import { ProfileComponent } from '../Components/profile/profile.component';
+// import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
+// import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
 import { CommonModule } from '@angular/common';
 import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
 import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
@@ -54,6 +59,12 @@ import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-
     HeaderComponent,
     HomeDashComponent,
     WelcomePageComponent,
+    ProfileComponent,
+    SignupPageComponent,
+    LoginPageComponent,
+    // CampaignPageComponent,
+    // AdChartsComponent,
+  ],
     ProfileComponent,
     CampaignPageComponent,
     AdChartsComponent

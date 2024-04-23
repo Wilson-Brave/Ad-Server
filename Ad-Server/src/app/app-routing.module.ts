@@ -6,6 +6,10 @@ import { HomePageComponent } from '../Pages/home-page/home-page.component';
 import { ProfilePageComponent } from '../Pages/profile-page/profile-page.component';
 import { HomeDashComponent } from '../Pages/home-dash/home-dash.component';
 import { PublisherPageComponent } from '../Pages/publisher-page/publisher-page.component';
+import {AdvertiserPageComponent} from '../Pages/advertiser-page/advertiser-page.component';
+import { AdminPageComponent } from '../Pages/admin-page/admin-page.component';
+import { LoginPageComponent } from '../Pages/login-page/login-page.component';
+import { SignupPageComponent } from '../Pages/signup-page/signup-page.component';
 import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.component';
 import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
 import { RegisterAdComponent } from '../Components/ui-components/register-ad/register-ad.component';
@@ -14,7 +18,12 @@ import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-
 
 const routes: Routes = [
   {path:'', component : HomePageComponent},
-  {path:'Publisher', component : PublisherPageComponent},
+  {path:'advertiser', component : AdvertiserPageComponent},
+  {path:'publisher', component : PublisherPageComponent},
+  {path:'login', component : LoginPageComponent},
+  {path:'sign-up', component : SignupPageComponent},
+  {path:'admin', component : AdminPageComponent},
+
   {
     path:'dashboard', component : HomeDashComponent,
     children: [
