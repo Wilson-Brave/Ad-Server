@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
+@import "../src/scss/b-styles.scss";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: black; }
 
@@ -11,3 +13,7 @@ cursor: pointer;
 color: white !important;
 }
 
+.b-spacer{
+  width: 100px;
+  height: 10vh;
+}

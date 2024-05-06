@@ -14,6 +14,7 @@ import { CampaignPageComponent } from '../Pages/campaign-page/campaign-page.comp
 import { AdChartsComponent } from '../Components/ui-components/ad-charts/ad-charts.component';
 import { RegisterAdComponent } from '../Components/ui-components/register-ad/register-ad.component';
 import { AdvertiserHomeComponent } from '../Components/ui-components/advertiser-home/advertiser-home.component';
+import { AdCampaignsComponent } from '../Components/ui-components/ad-campaigns/ad-campaigns.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'advertiser-home',
         component: AdvertiserHomeComponent,
+      },
+      {
+        path: 'Ad-Campaigns',
+        component: AdCampaignsComponent,
       },
       {
         path: 'Profile',

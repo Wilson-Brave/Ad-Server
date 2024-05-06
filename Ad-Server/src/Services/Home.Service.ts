@@ -1,5 +1,6 @@
+import { GoogleUserInfo } from './Home.Service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
 import { GlobalVariables } from './../../global';
 import { Observable, map, Subscription } from 'rxjs';
@@ -11,51 +12,78 @@ export class HomeService {
   public profileJson!: string;
   public loggedInUser!: AppUser;
   public appUser!: GoogleUserInfo;
-  public subAsString!:string;
+  public subAsString!: string;
 
   constructor(public auth: AuthService, public http: HttpClient) {
-    this.auth.user$.subscribe(u => {
-        if (this.isUserLoggedIn(`${u?.sub}`)) {
-            // User is logged in
-            console.log(`Hi ${this.appUser.Given_name}`)
-          } else {
+    console.log(`User Authentication Started !`);
+
+    this.auth.user$.subscribe((u) => {
+      console.log();
+
+      if (u) {
+        const sub = u.sub || '';
+        this.isUserLoggedIn(sub).subscribe((existsOrUser) => {
+          if (typeof existsOrUser === 'boolean') {
             // User is not logged in
-            postAdvert(advert: Advert): Observable<any> {
+            console.log(`logging in started !`);
 
-              const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-              return this.http.post<any>(
-                `${GlobalVariables.BASE_API_URL}/Advert`,
-                advert,
-                { headers }
+            this.appUser.Given_name = u!.given_name || '';
+            this.appUser.Family_name = u!.family_name || '';
+            this.appUser.Nickname = u!.nickname || '';
+            this.appUser.Name = u!.name || '';
+            this.appUser.Picture = u!.picture || '';
+            this.appUser.Locale = u!.locale || '';
+            this.appUser.Updated_at = new Date(u?.updated_at || '');
+            this.appUser.Email = u!.email || '';
+            this.appUser.Email_verified = u!.email_verified || false;
+            this.appUser.Sub = u!.sub || '';
 
-              );
+            this.postGoogleUser(this.appUser).subscribe(() => {
+              console.log(`Hi ${this.appUser.Given_name}`);
+            });
 
-            }
+          } else {
+            // User is logged in
+            console.log(`Hi ${existsOrUser.Given_name}`);
           }
+        });
+      }
     });
-}
+  }
 
-isUserLoggedIn(sub: string): Observable<GoogleUserInfo | boolean> {
-  return this.http
-      .get<any>(`${GlobalVariables.BASE_API_URL}/googleUserInfo/CheckIfUserExists(Sub='${sub}')`)
-      .pipe(
-          map((response) => {
-              const exists = response.value.length > 0;
-              this.appUser = response.value.length > 0 ? response.value[0] : null;
-              return exists ? response.value[0] : false;
-          })
-      );
-}
+  postGoogleUser(appUser: GoogleUserInfo): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(
+      `${GlobalVariables.BASE_API_URL}/GoogleUserInfo`,
+      appUser,
+      { headers }
+    );
+  }
 
-  mapToAppUser(profile: any): AppUser {
-    return {
-      user_id: profile.sub,
-      username: profile.nickname,
-      picture: profile.picture,
-      nickname: profile.nickname,
-      phone_number: '', // Add phone_number property if available in your JSON
-      app_metadata: '', // Add app_metadata property if available in your JSON
-    };
+  async isUserLoggedIn(sub: string): Promise<Observable<GoogleUserInfo>> {
+
+    console.log('Checking if user Exists !');
+    try{
+    var x = this.http
+      .get<any>(
+        `${GlobalVariables.BASE_API_URL}/googleUserInfo/CheckIfUserExists(Sub='${sub}')`
+      )
+      .pipe(map((response) => response.value));
+
+      var user = this.http
+      .get<any>(
+        `${GlobalVariables.BASE_API_URL}/GoogleUserInfo(${sub})`
+      )
+      .pipe(map((response) => response.value));
+
+      return user;
+
+    }
+    catch(error){
+      console.log(error);
+
+      throw error;
+    }
   }
 }
 
@@ -80,16 +108,5 @@ export interface GoogleUserInfo {
   Email: string;
   Email_verified: boolean;
   Sub: string;
+  Account_Verified: boolean;
 }
-
-
-// {
-//   "sub": "google-oauth2|100891320524541831300",
-//   "given_name": "Brave Wilson",
-//   "family_name": "Kahweka",
-//   "nickname": "bravekahweka",
-//   "name": "Brave Wilson Kahweka",
-//   "picture": "https://lh3.googleusercontent.com/a/ACg8ocKjNHY6qzdB5Ot__sYPjoohKt5ZQ02QwvDeZTeXJbZDifH0TVuq=s96-c",
-//   "locale": "en-GB",
-//   "updated_at": "2024-04-03T16:36:27.421Z"
-// }

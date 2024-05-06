@@ -1,0 +1,78 @@
+<div class="main">
+
+  <div class="container" *ngIf="isLoading; else loaded">
+
+    <app-loading></app-loading>
+
+  </div>
+
+  <ng-template #loaded>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center text-dark ">
+            Advertisement Campaigns
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="b-spacer"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-title">
+              <h2 class="text-center text-dark">
+                Active Campaigns
+              </h2>
+            </div>
+            <div class="card-body">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let campagin of AdCampaigns; let i=index">
+                    <!-- <th scope="row">1</th> -->
+                    <!-- <td>{{i}}</td> -->
+                    <td>{{campagin.CampaignName}}</td>
+                    <td>{{ campagin.StartDate | date:'yyyy-MM-dd' }}</td>
+                    <td>{{ campagin.EndDate | date:'yyyy-MM-dd' }}</td>                    
+                    <td><button role="button" class="btn btn-outline-danger" (onclick)="deleteRecord(campagin)"> Delete </button></td>                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <c-chart [data]="barData" type="bar" />
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmation-dialog" class="container d-none" style="position: fixed; top: 50%; left: 80%; transform: translate(-50%, -50%);">
+      <div class="row">
+        <div class="col-3 card">
+          <div class="card-title">
+            <h3 class="text-center">Are You Sure?</h3>
+          </div>
+          <div class="card-body">
+            <div class="button-group d-flex justify-content-around">
+              <button type="button" class="btn btn-outline-danger" (click)="onDeletConfirmation()">Delete</button>
+              <button type="button" class="btn btn-outline-success">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </ng-template>

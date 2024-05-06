@@ -1,0 +1,92 @@
+<div class="main">
+
+  <div class="container" *ngIf="isLoading; else loaded">
+
+    <app-loading></app-loading>
+
+  </div>
+
+  <ng-template #loaded>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col m-4">
+              <h1 class="text-center">
+               Advert Summary
+              </h1>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="b-spacer"></div>
+
+        <div class="col">
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{this.selectedCampaign.CampaignName}}
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <div *ngFor="let campaign of AdCampaigns">
+                <button class="dropdown-item" type="button" (click)="campaingChange(campaign)">{{campaign.CampaignName}}</button>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+        <hr>
+      </div>
+      
+      <div class="row m-auto">
+        <div class="col-8 h-100">
+          <div class="card bg-dark shadow">
+            <div class="card-body">
+              <c-chart [data]="data" type="line" (chartRef)="handleChartRef($event)" />
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card bg-dark-subtle text-center">
+            <div class="card-header">
+              {{selectedCampaign.CampaignName}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title align-self-start">Campaign Wallet</h5>
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th class="text-start">Item</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody class="">
+                  <tr>
+                    <td class="text-success text-start">Campaign Fund</td>
+                    <td>{{ selectedCampaign.CampaignFund }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-danger text-start">Campaign Expense</td>
+                    <td>{{ selectedCampaign.CampaignExpense }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark text-start">Campaign Reserves</td>
+                    <td>{{ selectedCampaign.CampaignReserves }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" class="btn btn-outline-dark">Fund Wallet</a>              
+            </div>
+            <div class="card-footer text-muted" [ngClass]="{ 'text-success': daysToGo(selectedCampaign.EndDate) >= 0, 'text-danger': daysToGo(selectedCampaign.EndDate) < 0 }">
+              {{ daysToGo(selectedCampaign.EndDate) > 0 ? daysToGo(selectedCampaign.EndDate) + ' days to go' : (daysToGo(selectedCampaign.EndDate) === 0 ? 'Today is the last day' : (daysToGo(selectedCampaign.EndDate) < 0 ? daysToGo(selectedCampaign.EndDate) + ' days ago' : '')) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </ng-template>
+</div>

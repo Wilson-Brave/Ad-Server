@@ -3,6 +3,7 @@ using Ad_Server_API.Models;
 using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OData.ModelBuilder;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,24 @@ modelBuilder.EntityType<Advert>()
     .Function(nameof(AdvertController.AdvertByAdvertiser))
     .ReturnsCollectionFromEntitySet<Advert>("Advert")
     .Parameter<int>("AdvertiserId");
+modelBuilder.EntityType<Advert>()
+    .Collection
+    .Function(nameof(AdvertController.AdvertsByCampaign))
+    .ReturnsCollectionFromEntitySet<Advert>("Advert")
+    .Parameter<int>("CampaignId");
+
+modelBuilder.EntitySet<AdCampaign>("AdCampaign");
+modelBuilder.EntityType<AdCampaign>()
+    .Collection
+    .Function(nameof(AdCampaignController.AdCampaignByAdvertiser))
+    .ReturnsCollectionFromEntitySet<AdCampaign>("AdCampaign")
+    .Parameter<int>("AdvertiserId");
+
+
+
+
+modelBuilder.EntitySet<AdCampaignAdvert>("AdCampaignAdvert");
+
 
 modelBuilder.EntityType<Advert>()
     .Function(nameof(AdvertController.UploadFile))

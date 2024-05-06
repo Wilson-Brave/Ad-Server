@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
-  selector: 'app-nav-item',
+  selector: 'b-nav-item',
   templateUrl: './nav-item.component.html',
   styleUrls: ['./nav-item.component.css']
 })
 
-export class NavItemComponent implements OnChanges {
+export class BNavItemComponent implements OnChanges {
   @Input() item: NavItem | any;
   @Input() depth: any;
 

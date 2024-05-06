@@ -63,6 +63,23 @@ public class AdvertController : ODataController
         }
     }
 
+    [HttpGet]
+    [EnableQuery]
+    public IQueryable<Advert> AdvertsByCampaign([FromODataUri] int CampaignId)
+    {
+        try
+        {
+            IQueryable<Advert> result = _db.Advert.Where(s => s.CampaignId == CampaignId);
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
+    }
+
+
     public async Task<IActionResult> Put([FromODataUri] int key, [FromBody] Advert update)
     {
 

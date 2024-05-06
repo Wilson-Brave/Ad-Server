@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using System.Data;
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 
 namespace Ad_Server_API.Controllers;
@@ -47,23 +47,38 @@ public class GoogleUserInfoController : ODataController
         IQueryable<GoogleUserInfo> result = _db.GoogleUserInfo.Where(s => s.GoogleUserInfoId == key);
         return SingleResult.Create(result);
     }
-
     [HttpGet]
     [EnableQuery]
-    public SingleResult<GoogleUserInfo> CheckIfUserExists([FromODataUri] string Sub)
+    public async Task<IActionResult> CheckIfUserExists([FromODataUri] string Sub)
     {
         try
         {
-            IQueryable<GoogleUserInfo> result = _db.GoogleUserInfo
-                .Where(s => s.Sub == Sub);
-            return SingleResult.Create(result);
+            IQueryable<GoogleUserInfo> result = _db.GoogleUserInfo.Where(s => s.Sub == Sub);
+
+            GoogleUserInfo existingUser = await result.FirstOrDefaultAsync();
+
+            if (existingUser == null)
+            {
+                existingUser = new GoogleUserInfo
+                {
+                    Sub = Sub,
+                    Account_Verified = false,
+                    Updated_at = DateTime.UtcNow
+                };
+                _db.GoogleUserInfo.Add(existingUser);
+                await _db.SaveChangesAsync();
+            }
+
+            return Ok(); // or return CreatedAtAction if appropriate
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(ex.Message);
             throw;
         }
     }
+
+
 
     public async Task<IActionResult> Put([FromODataUri] int key, [FromBody] GoogleUserInfo update)
     {
@@ -124,7 +139,6 @@ public class GoogleUserInfoController : ODataController
 
         _db.GoogleUserInfo.Add(insert);
         await _db.SaveChangesAsync();
-
         return Created(insert);
     }
 
@@ -132,7 +146,6 @@ public class GoogleUserInfoController : ODataController
     [EnableQuery]
     public async Task<IActionResult> Delete([FromODataUri] int key)
     {
-
         IQueryable<GoogleUserInfo> result = _db.GoogleUserInfo.Where(p => p.GoogleUserInfoId == key);
         _db.GoogleUserInfo.Remove(result.FirstOrDefault());
         await _db.SaveChangesAsync();

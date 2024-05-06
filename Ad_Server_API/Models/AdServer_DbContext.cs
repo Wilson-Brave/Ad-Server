@@ -11,6 +11,8 @@ public class AdServerDbContext : DbContext
 
     public DbSet<Advertiser> Advertiser  { get; set; }
     public DbSet<Advert> Advert { get; set; }
+    public DbSet<AdCampaign> AdCampaign { get; set; }
+    public DbSet<AdCampaignAdvert> AdCampaignAdvert { get; set; }
     public DbSet<Publisher> Publisher { get; set; }
     public DbSet<GoogleUserInfo> GoogleUserInfo { get; set; }
 
@@ -29,6 +31,13 @@ public class AdServerDbContext : DbContext
 
         modelBuilder.Entity<Advert>()
             .HasKey(s => s.AdvertId);
+
+        modelBuilder.Entity<AdCampaign>()
+            .HasKey(s => s.AdCampaignId);
+
+        modelBuilder.Entity<AdCampaignAdvert>()
+            .HasKey(s => s.AdCampaignAdvertId);
+
 
         modelBuilder.Entity<GoogleUserInfo>()
             .HasKey(s => s.GoogleUserInfoId);

@@ -2,10 +2,19 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
+import { navItems } from '../../Models/_nav';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 const MONITOR_VIEW = 'screen and (min-width: 1024px)';
+
+
+function isOverflown(element: HTMLElement) {
+  return (
+    element.scrollHeight > element.clientHeight ||
+    element.scrollWidth > element.clientWidth
+  );
+}
 
 @Component({
   selector: 'app-home-dash',
@@ -27,8 +36,16 @@ export class HomeDashComponent implements OnInit {
   get isOver(): boolean {
     return this.isMobileScreen;
   }
+//
+public navItems = navItems;
 
-  
+onScrollbarUpdate($event: any) {
+  // if ($event.verticalUsed) {
+  // console.log('verticalUsed', $event.verticalUsed);
+  // }
+}
+//
+
   constructor(private breakpointObserver: BreakpointObserver) {
     this.htmlElement = document.querySelector('html')!;
     this.layoutChangesSubscription = this.breakpointObserver
